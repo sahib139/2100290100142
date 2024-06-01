@@ -1,82 +1,65 @@
-const axios = require("axios"); 
-let windowPrevState = []
-let windowCurrState = []
-let avg = 0
-const {token} = require("../config/server_config");
- 
-
-const fetchNumbers = async (numberId, token) => {
-    try {
-        const response = await axios.get(`http://20.244.56.144/test/${numberId}`, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
-        console.log(response.data);
-        return response.data.numbers;
-    } catch (error) {
-        console.error(`Error fetching numbers: ${error}`);
-        return [];
-    }
-};
-
-function changeState(response){
-    const newArray = response.filter(element => !windowPrevState.includes(element));
-    windowPrevState = windowCurrState;
-    windowCurrState = newArray;
-
-    const sum = windowCurrState.reduce((acc, cur) => acc + cur, 0);
-    avg = sum/windowCurrState.length;
-}
+const CalculatorService = require("../service/calculator-service");
+const calculatorService = new CalculatorService();
 
 async function getEven(req,res){
-    const response = await fetchNumbers('even',token);
-
-    changeState(response);
-
-    res.status(200).json({
-        numbers:response,
-        windowPrevState:windowPrevState,
-        windowCurrState:windowCurrState,
-        avg:avg,
-    })
-    
+    try {
+        const reponse = await calculatorService.Even();
+        res.status(200).json({
+            numbers:response.numbers,
+            windowPrevState:response.windowPrevState,
+            windowCurrState:reponse.windowCurrState,
+            avg:response.avg,
+        })
+    } catch (error) {
+        res.status(500).json({
+            message:`Unable to fetch the response due to ${error}`
+        });
+    }
 }
 async function getPrime(req,res){
-    const response = await fetchNumbers('primes',token);
-
-    changeState(response);
-
-    res.status(200).json({
-        numbers:response,
-        windowPrevState:windowPrevState,
-        windowCurrState:windowCurrState,
-        avg:avg,
-    })
+    try {
+        const reponse = await calculatorService.Prime();
+        res.status(200).json({
+            numbers:response.numbers,
+            windowPrevState:response.windowPrevState,
+            windowCurrState:reponse.windowCurrState,
+            avg:response.avg,
+        })
+    } catch (error) {
+        res.status(500).json({
+            message:`Unable to fetch the response due to ${error}`
+        });
+    }
 }
 async function getRandom(req,res){
-    const response = await fetchNumbers('rand',token);
-
-    changeState(response);
-
-    res.status(200).json({
-        numbers:response,
-        windowPrevState:windowPrevState,
-        windowCurrState:windowCurrState,
-        avg:avg,
-    })
+    try {
+        const reponse = await calculatorService.Rand();
+        res.status(200).json({
+            numbers:response.numbers,
+            windowPrevState:response.windowPrevState,
+            windowCurrState:reponse.windowCurrState,
+            avg:response.avg,
+        })
+    } catch (error) {
+        res.status(500).json({
+            message:`Unable to fetch the response due to ${error}`
+        });
+    }
 }
 async function getFibonacci(req,res){
-    const response = await fetchNumbers('fibo',token);
-
-    changeState(response);
-
-    res.status(200).json({
-        numbers:response,
-        windowPrevState:windowPrevState,
-        windowCurrState:windowCurrState,
-        avg:avg,
-    })
+    try {
+        const reponse = await calculatorService.Fibo();
+        res.status(200).json({
+            numbers:response.numbers,
+            windowPrevState:response.windowPrevState,
+            windowCurrState:reponse.windowCurrState,
+            avg:response.avg,
+        })
+    } catch (error) {
+        res.status(500).json({
+            message:`Unable to fetch the response due to ${error}`
+        });
+    }
 }
 
 module.exports= {
