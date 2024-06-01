@@ -3,11 +3,12 @@ const calculatorService = new CalculatorService();
 
 async function getEven(req,res){
     try {
-        const reponse = await calculatorService.Even();
+        const response = await calculatorService.Even();
+        console.log(response);
         res.status(200).json({
             numbers:response.numbers,
             windowPrevState:response.windowPrevState,
-            windowCurrState:reponse.windowCurrState,
+            windowCurrState:response.windowCurrState,
             avg:response.avg,
         })
     } catch (error) {
@@ -18,11 +19,11 @@ async function getEven(req,res){
 }
 async function getPrime(req,res){
     try {
-        const reponse = await calculatorService.Prime();
+        const response = await calculatorService.Prime();
         res.status(200).json({
             numbers:response.numbers,
             windowPrevState:response.windowPrevState,
-            windowCurrState:reponse.windowCurrState,
+            windowCurrState:response.windowCurrState,
             avg:response.avg,
         })
     } catch (error) {
@@ -33,11 +34,11 @@ async function getPrime(req,res){
 }
 async function getRandom(req,res){
     try {
-        const reponse = await calculatorService.Rand();
+        const response = await calculatorService.Rand();
         res.status(200).json({
             numbers:response.numbers,
             windowPrevState:response.windowPrevState,
-            windowCurrState:reponse.windowCurrState,
+            windowCurrState:response.windowCurrState,
             avg:response.avg,
         })
     } catch (error) {
@@ -48,11 +49,11 @@ async function getRandom(req,res){
 }
 async function getFibonacci(req,res){
     try {
-        const reponse = await calculatorService.Fibo();
+        const response = await calculatorService.Fibo();
         res.status(200).json({
             numbers:response.numbers,
             windowPrevState:response.windowPrevState,
-            windowCurrState:reponse.windowCurrState,
+            windowCurrState:response.windowCurrState,
             avg:response.avg,
         })
     } catch (error) {

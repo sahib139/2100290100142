@@ -14,16 +14,16 @@ class CalculatorService{
                     'Authorization': `Bearer ${token}`
                 }
             });
-            console.log(response.data);
+
             return response.data.numbers;
         } catch (error) {
             console.error(`Error fetching numbers: ${error}`);
-            return [];
+            return [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
         }
     }
 
     changeState(response){
-        let newArray = response.filter(element => !windowPrevState.includes(element));
+        let newArray = response.filter(element => !windowCurrState.includes(element));
         newArray = newArray.slice(0,WindowSize);
         windowPrevState = windowCurrState;
         windowCurrState = newArray;
@@ -34,8 +34,9 @@ class CalculatorService{
 
     async Even(){
         try {
-            const number = await fetchNumbers('even',token);
+            const number = await this.fetchNumbers('even',token);
             this.changeState(number);
+            console.log("hi");
             return {
                 numbers:number,
                 windowPrevState:windowPrevState,
@@ -49,7 +50,7 @@ class CalculatorService{
 
     async Fibo(){
         try {
-            const number = await fetchNumbers('fibo',token);
+            const number = await this.fetchNumbers('fibo',token);
             this.changeState(number);
             return {
                 numbers:number,
@@ -64,7 +65,7 @@ class CalculatorService{
 
     async Prime(){
         try {
-            const number = await fetchNumbers('primes',token);
+            const number = await this.fetchNumbers('primes',token);
             this.changeState(number);
             return {
                 numbers:number,
@@ -79,7 +80,7 @@ class CalculatorService{
 
     async Rand(){
         try {
-            const number = await fetchNumbers('rand',token);
+            const number = await this.fetchNumbers('rand',token);
             this.changeState(number);
             return {
                 numbers:number,
