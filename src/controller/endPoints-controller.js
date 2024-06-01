@@ -2,7 +2,7 @@ const axios = require("axios");
 let windowPrevState = []
 let windowCurrState = []
 let avg = 0
-const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzE3MjIyNzMxLCJpYXQiOjE3MTcyMjI0MzEsImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6IjBkMGRlNzA2LTM2MTItNGYzZS04NTNiLTFkM2M2NWQ5Y2RkOSIsInN1YiI6InZhaWJoYXYuMjEyNWNzbWUxMDI4QGtpZXQuZWR1In0sImNvbXBhbnlOYW1lIjoiS0lFVCBncm91cCBvZiBJbnN0aXR1dGlvbiIsImNsaWVudElEIjoiMGQwZGU3MDYtMzYxMi00ZjNlLTg1M2ItMWQzYzY1ZDljZGQ5IiwiY2xpZW50U2VjcmV0IjoibWxoRmFqa0tucFdKSGZ2WSIsIm93bmVyTmFtZSI6IlZhaWJoYXYgUGFuaml5YXIiLCJvd25lckVtYWlsIjoidmFpYmhhdi4yMTI1Y3NtZTEwMjhAa2lldC5lZHUiLCJyb2xsTm8iOiIyMTAwMjkxNTMwMDU2In0.0Nt2_QM31wLzaJQnDG4ZYZVG9DeX1pWpMSy4LGh5tNg";
+const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzE3MjIzMjA1LCJpYXQiOjE3MTcyMjI5MDUsImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6IjFiZGE3ZWFjLWI3ZmMtNGYwMC1iNzJjLWQ4ZDc1Yjg1ZTczMCIsInN1YiI6ImFzaGlzaC4yMTI1aXQxMTc3QGtpZXQuZWR1In0sImNvbXBhbnlOYW1lIjoiS0lFVCBncm91cCBvZiBpbnN0aXR1dGlvbnMiLCJjbGllbnRJRCI6IjFiZGE3ZWFjLWI3ZmMtNGYwMC1iNzJjLWQ4ZDc1Yjg1ZTczMCIsImNsaWVudFNlY3JldCI6Ikxka2FBRkdxT05QZm5aTnAiLCJvd25lck5hbWUiOiJBc2hpc2ggQmhhdHQiLCJvd25lckVtYWlsIjoiYXNoaXNoLjIxMjVpdDExNzdAa2lldC5lZHUiLCJyb2xsTm8iOiIyMTAwMjkwMTMwMDQzIn0.HRrdb0pn2wbqPSWWXH1M7V0btFoZqhtWVjqTP7Q4PIg";
  
 
 const fetchNumbers = async (numberId, token) => {
@@ -12,6 +12,7 @@ const fetchNumbers = async (numberId, token) => {
                 'Authorization': `Bearer ${token}`
             }
         });
+        console.log(response.data);
         return response.data.numbers;
     } catch (error) {
         console.error(`Error fetching numbers: ${error}`);
@@ -37,7 +38,7 @@ async function getEven(req,res){
         numbers:response,
         windowPrevState:windowPrevState,
         windowCurrState:windowCurrState,
-        avg:avg
+        avg:avg,
     })
     
 }
@@ -49,8 +50,8 @@ async function getPrime(req,res){
     res.status(200).json({
         numbers:response,
         windowPrevState:windowPrevState,
-        windowCurrState:[],
-        avg:0
+        windowCurrState:windowCurrState,
+        avg:avg,
     })
 }
 async function getRandom(req,res){
@@ -61,8 +62,8 @@ async function getRandom(req,res){
     res.status(200).json({
         numbers:response,
         windowPrevState:windowPrevState,
-        windowCurrState:[],
-        avg:0
+        windowCurrState:windowCurrState,
+        avg:avg,
     })
 }
 async function getFibonacci(req,res){
@@ -73,8 +74,8 @@ async function getFibonacci(req,res){
     res.status(200).json({
         numbers:response,
         windowPrevState:windowPrevState,
-        windowCurrState:[],
-        avg:0
+        windowCurrState:windowCurrState,
+        avg:avg,
     })
 }
 
