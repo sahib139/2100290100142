@@ -12,7 +12,8 @@ class CalculatorService{
             const response = await axios.get(`http://20.244.56.144/test/${numberId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
-                }
+                },
+                timeout: 500
             });
 
             return response.data.numbers;

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {getEven,getFibonacci,getRandom,getPrime} = require("../controller/endPoints-controller");
+const {getEven,getFibonacci,getRandom,getPrime} = require("../controller/calculator-controller");
  
 
 router.get('/p',getPrime);
