@@ -2,7 +2,7 @@ const axios = require("axios");
 let windowPrevState = []
 let windowCurrState = []
 let avg = 0
-const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzE3MjIzMjA1LCJpYXQiOjE3MTcyMjI5MDUsImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6IjFiZGE3ZWFjLWI3ZmMtNGYwMC1iNzJjLWQ4ZDc1Yjg1ZTczMCIsInN1YiI6ImFzaGlzaC4yMTI1aXQxMTc3QGtpZXQuZWR1In0sImNvbXBhbnlOYW1lIjoiS0lFVCBncm91cCBvZiBpbnN0aXR1dGlvbnMiLCJjbGllbnRJRCI6IjFiZGE3ZWFjLWI3ZmMtNGYwMC1iNzJjLWQ4ZDc1Yjg1ZTczMCIsImNsaWVudFNlY3JldCI6Ikxka2FBRkdxT05QZm5aTnAiLCJvd25lck5hbWUiOiJBc2hpc2ggQmhhdHQiLCJvd25lckVtYWlsIjoiYXNoaXNoLjIxMjVpdDExNzdAa2lldC5lZHUiLCJyb2xsTm8iOiIyMTAwMjkwMTMwMDQzIn0.HRrdb0pn2wbqPSWWXH1M7V0btFoZqhtWVjqTP7Q4PIg";
+const {token} = require("../config/server_config");
  
 
 const fetchNumbers = async (numberId, token) => {
